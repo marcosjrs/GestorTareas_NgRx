@@ -1,3 +1,8 @@
-<p>
-  todo-item works!
-</p>
+<!-- Cuando se esté editando=> class `editing`y cuando esté completada la tarea =>`completed` -->
+<li class="completed">
+  <div class="view">
+    <input class="toggle" type="checkbox" checked /> <!-- ojo con el checked-->
+    <label>Aprender NgRX</label> <button class="destroy"></button>
+  </div>
+  <input class="edit" value="Aprender [Algo]" />
+</li>
