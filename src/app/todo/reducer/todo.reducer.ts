@@ -33,6 +33,9 @@ export function todoReducer(
       });
       return todosEditados;
 
+    case fromTodo.BORRAR_TODO:
+      return state.filter((todo: Todo) =>   todo.id !== action.id );
+
     default:
       return state;
   }
