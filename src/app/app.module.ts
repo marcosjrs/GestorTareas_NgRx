@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { todoReducer } from './todo/reducer/todo.reducer';
 
 
 import { AppComponent } from './app.component';
@@ -15,6 +14,7 @@ import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
 import { TodoAddComponent } from './todo/todo-add/todo-add.component';
 import { TodoComponent } from './todo/todo.component';
 import { environment } from '../environments/environment';
+import { reducers } from './todo/reducer/app.reducers';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ todos:todoReducer }), //propiedad de store y que reducer lo manejará
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Mantiene los ultimos 25 states
       logOnly: environment.production,
