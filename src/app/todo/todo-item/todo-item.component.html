@@ -1,8 +1,15 @@
 <!-- Cuando se esté editando=> class `editing`y cuando esté completada la tarea =>`completed` -->
-<li class="completed">
+<li [ngClass]="{ completed: todo.completado, editing: editando }">
   <div class="view">
-    <input class="toggle" type="checkbox" checked /> <!-- ojo con el checked-->
-    <label>Aprender NgRX</label> <button class="destroy"></button>
+    <input
+      class="toggle"
+      type="checkbox"
+      [checked]="todo.completado"
+      [formControl]="chkField"
+    />
+    <!-- ojo con el checked-->
+    <label (dblclick)="editar()">{{ todo.texto }}</label>
+    <button class="destroy"></button>
   </div>
-  <input class="edit" value="Aprender [Algo]" />
+  <input class="edit" [formControl]="txtInput" (blur)="terminarEdicion()" #inputEdit />
 </li>
