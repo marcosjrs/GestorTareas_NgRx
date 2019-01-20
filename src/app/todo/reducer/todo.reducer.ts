@@ -1,6 +1,6 @@
 import * as fromTodo from "../actions/todo.action";
 import { Todo } from "../model/todo.model";
-import { TOOOGLE_ALL_TODO } from '../actions/todo.action';
+import { TOOOGLE_ALL_TODO, BORRAR_COMPLETADOS_TODO } from '../actions/todo.action';
 
 /** fake todos */
 let todo1 = new Todo("tarea 1");
@@ -41,6 +41,9 @@ export function todoReducer(
 
     case fromTodo.BORRAR_TODO:
       return state.filter((todo: Todo) =>   todo.id !== action.id );
+
+    case fromTodo.BORRAR_COMPLETADOS_TODO:
+      return state.filter((todo: Todo) =>   !todo.completado );
 
     default:
       return state;

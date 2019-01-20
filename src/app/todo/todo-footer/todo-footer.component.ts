@@ -4,6 +4,7 @@ import { AppState } from "../reducer/app.reducers";
 import * as fromFiltro from "../actions/filtro.actions";
 import { SetFiltroAction } from "../actions/filtro.actions";
 import { Todo } from "../model/todo.model";
+import { BorrarCompletadosTodoAction } from "../actions/todo.action";
 
 @Component({
   selector: "app-todo-footer",
@@ -35,5 +36,9 @@ export class TodoFooterComponent implements OnInit {
 
   contarPendientes(todos: Todo[]) {
     this.pendientes = todos.filter(element => !element.completado).length;
+  }
+
+  borrarCompletados() {
+    this.store.dispatch(new BorrarCompletadosTodoAction());
   }
 }
