@@ -1,5 +1,6 @@
 import * as fromTodo from "../actions/todo.action";
 import { Todo } from "../model/todo.model";
+import { TOOOGLE_ALL_TODO } from '../actions/todo.action';
 
 /** fake todos */
 let todo1 = new Todo("tarea 1");
@@ -24,6 +25,11 @@ export function todoReducer(
           : todo;
       });
       return todos;
+
+    case fromTodo.TOOOGLE_ALL_TODO:
+      return state.map((todo: Todo) => {
+        return { ...todo, completado: action.completado };
+      });
 
     case fromTodo.EDITAR_TODO:
       const todosEditados = state.map((todo: Todo) => {
